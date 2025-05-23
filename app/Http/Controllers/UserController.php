@@ -11,7 +11,9 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        return User::paginate(10);
+        $user = User::all();
+
+        return $user;
     }
 
     /**
@@ -32,7 +34,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user) {
+    public function show($id) {
         $user = User::find($id);
 
         if(!$user){
@@ -45,7 +47,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request) {
+    public function update($id, Request $request) {
         $data = $request->all();
 
         $user = User::find($id);
