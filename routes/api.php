@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnimalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,13 @@ Route::group(['prefix' => 'users'], function(){
     Route::get('/index', [UserController::class, 'index']);
     Route::post('/update/{id}', [UserController::class, 'update']);
     Route::delete('/delete/{id}', [UserController::class, 'delete']);
+});
+
+//Rotas de Animais
+Route::group(['prefix' => 'animals'], function(){
+    Route::post('/create', [AnimalController::class, 'create']);
+    Route::get('/show/{id}', [AnimalController::class, 'show']);
+    Route::get('/index', [AnimalController::class, 'index']);
+    Route::post('/update/{id}', [AnimalController::class, 'update']);
+    Route::delete('/delete/{id}', [AnimalController::class, 'delete']);
 });
