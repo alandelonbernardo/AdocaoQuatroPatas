@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\AdoptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,13 @@ Route::group(['prefix' => 'animals'], function(){
     Route::get('/index', [AnimalController::class, 'index']);
     Route::post('/update/{id}', [AnimalController::class, 'update']);
     Route::delete('/delete/{id}', [AnimalController::class, 'delete']);
+});
+
+//Rota de Adoções
+Route::group(['prefix' => 'adoptions'], function(){
+    Route::post('/create', [AdoptionController::class, 'create']);
+    Route::get('/show/{id}', [AdoptionController::class, 'show']);
+    Route::get('/index', [AdoptionController::class, 'index']);
+    Route::post('/update/{id}', [AdoptionController::class, 'update']);
+    Route::delete('/delete/{id}', [AdoptionController::class, 'delete']);
 });
