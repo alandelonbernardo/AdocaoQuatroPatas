@@ -65,7 +65,8 @@ class AnimalController extends Controller
         $animal->specie = $data['specie'];
         $animal->breed = $data['breed'];
         $animal->age = $data['age'];
-        $animal->size = $data['description'];
+        $animal->size = $data['size'];
+        $animal->description = $data['description'];
         $animal->photo = $data['photo'];
         $animal->status = $data['status'];
         $animal->save();
