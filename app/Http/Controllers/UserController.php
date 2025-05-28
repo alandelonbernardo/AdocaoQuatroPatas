@@ -22,10 +22,18 @@ class UserController extends Controller
     public function create(Request $request) {
         $data = $request->all();
 
+        if($data['email']){
+            $checkEmail = User::where('email', $data['email'])->count();
+            if($checkEmail > 0){
+                throw new Exception('Já existe um usuário com esse e-mail cadastrado!');
+            }
+        }
+
         $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = bcrypt ($data['password']);
+        $dataFormatada = Carbon::createFromFormat('d/m/Y H:i', $request->get('created_at'))->toDateTimeString();
         $user->save();
 
         return $user;

@@ -48,8 +48,8 @@ class AdoptionController extends Controller
      * Update the specified resource in storage.
      */
     public function update(AdoptionRequest $request, $id) {
-        $adoption = $request->validated();
-        $adoption = Adoption::finf($id);
+        $data = $request->validated();
+        $adoption = Adoption::find($id);
 
         if(!$adoption) {
             return ['message' => 'Adoção não existe'];
