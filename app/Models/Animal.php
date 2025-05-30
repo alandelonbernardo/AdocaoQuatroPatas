@@ -19,4 +19,8 @@ class Animal extends Model
     ];
 
     use HasFactory;
+
+    public function adoption() {
+        return $this->hasOne(Adoption::class);
+    }
 }
