@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adoption extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'animal_id',
+        'status'
+    ];
+
     use HasFactory;
 
     public function user() {

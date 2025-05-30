@@ -12,7 +12,7 @@ class AdoptionController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $adoption = Adoption::all();
+        $adoption = Adoption::query()->with('user', 'animal')->get();
 
         return $adoption;
     }
@@ -35,7 +35,7 @@ class AdoptionController extends Controller
      * Display the specified resource.
      */
     public function show($id) {
-        $adoption = Adoption::find($id);
+        $adoption = Adoption::where('id', $id)->with('user', 'animal')->first();
 
         if(!$adoption) {
             return ['message' => 'Adoção não existe'];

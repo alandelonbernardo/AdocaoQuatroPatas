@@ -12,7 +12,7 @@ class AnimalController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $animal = Animal::all();
+        $animal = Animal::query()->with('adoption')->get();
 
         return $animal;
     }
@@ -40,8 +40,7 @@ class AnimalController extends Controller
      * Display the specified resource.
      */
     public function show($id) {
-        $animal = new Animal();
-        $animal = $animal->find($id);
+        $animal = Animal::where('id', $id)->with('adoption')->first();
 
         if(!$animal) {
             return ['message' => 'Não existe esse animal ou foi excluido!'];
