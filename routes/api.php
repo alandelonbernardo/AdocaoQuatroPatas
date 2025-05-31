@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\UploadsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,5 @@ Route::group(['prefix' => 'adoptions'], function(){
     Route::post('/update/{id}', [AdoptionController::class, 'update']);
     Route::delete('/delete/{id}', [AdoptionController::class, 'delete']);
 });
+
+Route::post('/upload', [UploadsController::class, 'upload']);
